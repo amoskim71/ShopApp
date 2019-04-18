@@ -18,10 +18,10 @@ import kotlinx.android.synthetic.main.fragment_product.view.*
  * specified [OnListFragmentInteractionListener].
  * TODO: Replace the implementation with code for your data type.
  */
-class MyProductRecyclerViewAdapter(
+class ProductAdapter(
         private val mValues: List<DummyItem>,
         private val mListener: OnListFragmentInteractionListener?)
-    : RecyclerView.Adapter<MyProductRecyclerViewAdapter.ViewHolder>() {
+    : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
 

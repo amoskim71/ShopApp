@@ -45,7 +45,7 @@ class ProductFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyProductRecyclerViewAdapter(DummyContent.ITEMS, listener)
+                adapter = ProductAdapter(DummyContent.ITEMS, listener)
             }
         }
         return view
