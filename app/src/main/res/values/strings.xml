@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Shop App</string>
+    <string name="title_activity_sample">SampleActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_camera">Camera</string>
+    <string name="title_mail">Email</string>
+    <string name="title_user">User</string>
 </resources>

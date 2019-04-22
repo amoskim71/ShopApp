@@ -1,9 +1,11 @@
 package com.trantordev.shopapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.trantordev.shopapp.feature.product.ProductFragment
 import com.trantordev.shopapp.feature.product.dummy.DummyContent
+import com.trantordev.shopapp.feature.sample.SampleActivity
 import com.trantordev.shopapp.network.api.ProductApi
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
@@ -29,6 +31,12 @@ class MainActivity : AppCompatActivity(), ProductFragment.OnListFragmentInteract
     }
 
     override fun onListFragmentInteraction(item: DummyContent.DummyItem?) {
-        // implementation
+
+        // TODO provisorio para chamar tela tirar depois
+        val intent = Intent(
+                this,
+                SampleActivity::class.java
+        )
+        startActivity(intent)
     }
 }
