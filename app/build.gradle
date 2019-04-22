@@ -14,8 +14,10 @@ ext {
     rxBindingVersion = "2.0.0"
     rxJavaVersion = "2.1.6"
     rxAndroidVersion = "2.0.1"
-    timberVersion = "4.6.0"
+    timberVersion = "4.7.0"
     koinVersion = "1.0.2"
+    koinCoreVersion="2.0.0-beta-4"
+    koinAndroidVersion="2.0.0-rc-2"
     junitVersion = "4.12"
     androidxJunitVersion = "1.1.0"
     androidxExpressoVersion = "3.1.1"
@@ -92,9 +94,12 @@ dependencies {
     implementation "com.jakewharton.timber:timber:$timberVersion"
 
     // Koin DI
-    implementation "org.koin:koin-android:$koinVersion"
-    implementation "org.koin:koin-android-scope:$koinVersion"
-    implementation "org.koin:koin-android-viewmodel:$koinVersion"
+//    implementation "org.koin:koin-android:$koinVersion"
+//    implementation "org.koin:koin-android-scope:$koinVersion"
+//    implementation "org.koin:koin-android-viewmodel:$koinVersion"
+//    implementation "org.koin:koin-core:$koinCoreVersion"
+    implementation "org.koin:koin-android:$koinAndroidVersion"
+
 
     // Test
     testImplementation "junit:junit:$junitVersion"

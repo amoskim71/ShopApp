@@ -2,7 +2,9 @@ package com.trantordev.shopapp
 
 import android.app.Application
 import com.trantordev.shopapp.di.mainModule
-import org.koin.android.ext.android.startKoin
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 import timber.log.Timber
 
 class ShopAppAplication: Application(){
@@ -15,7 +17,20 @@ class ShopAppAplication: Application(){
 
 
     private fun setupKoin(){
-        startKoin(this, listOf(mainModule))
+
+        // TODO mantido por histórico
+        //startKoin(this, listOf(mainModule))
+
+        startKoin {
+
+            androidLogger()
+
+            androidContext(this@ShopAppAplication)
+
+            modules(mainModule)
+
+        }
+
     }
 
     private fun setupTimber(){

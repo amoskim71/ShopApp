@@ -1,9 +1,10 @@
 package com.trantordev.shopapp.di
 
-import com.trantordev.shopapp.network.ServiceApiInitializer
+import com.trantordev.shopapp.network.api.ProductApi
 import com.trantordev.shopapp.util.Constants
 import okhttp3.OkHttpClient
-import org.koin.dsl.module.module
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -11,28 +12,31 @@ import java.util.concurrent.TimeUnit
 
 const val RETROFIT = "retrofit"
 const val OKHTTP = "okhttp"
+const val RETROFIT_PRODUCTAPI = "retrofit_product_api"
 
 val mainModule = module {
-//  single { MainActivity(get()) }
 
-  single { ServiceApiInitializer() }
-
-    single(RETROFIT) {
+    single(named(RETROFIT)) {
 
         Retrofit.Builder()
                 .addConverterFactory(MoshiConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl("http:// trocar aqui")
-                .client(get(OKHTTP))
+                .baseUrl("https://private-anon-0c3dd64669-enjoeitest.apiary-mock.com/")
+                .client(get(named(OKHTTP)))
                 .build()
     }
 
-    single(OKHTTP) {
-
+    single(named(OKHTTP)) {
         OkHttpClient
                 .Builder()
                 .connectTimeout(Constants.REQUEST_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(Constants.REQUEST_TIMEOUT, TimeUnit.SECONDS)
                 .build()
     }
+
+    single<ProductApi>(named(RETROFIT_PRODUCTAPI)) {
+        val retrofit: Retrofit = get(named(RETROFIT))
+        retrofit.create(ProductApi::class.java)
+    }
+
 }
