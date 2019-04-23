@@ -1,4 +1,4 @@
-package com.trantordev.shopapp.feature.product
+package com.trantordev.shopapp.feature.product.list
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.trantordev.shopapp.R
 
 
-import com.trantordev.shopapp.feature.product.ProductFragment.OnListFragmentInteractionListener
+import com.trantordev.shopapp.feature.product.list.ProductFragment.OnListFragmentInteractionListener
 import com.trantordev.shopapp.feature.product.dummy.DummyContent.DummyItem
 
 import kotlinx.android.synthetic.main.fragment_product.view.*

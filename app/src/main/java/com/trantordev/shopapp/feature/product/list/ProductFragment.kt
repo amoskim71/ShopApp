@@ -1,4 +1,4 @@
-package com.trantordev.shopapp.feature.product
+package com.trantordev.shopapp.feature.product.list
 
 import android.content.Context
 import android.os.Bundle

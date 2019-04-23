@@ -1,13 +1,13 @@
-package com.trantordev.shopapp.feature.sample.ui.user
+package com.trantordev.shopapp.feature.camera
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class UserViewModel : ViewModel() {
+class CameraViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is user Fragment"
+        value = "This is camera Fragment"
     }
     val text: LiveData<String> = _text
 }

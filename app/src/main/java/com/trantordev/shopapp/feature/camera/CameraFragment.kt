@@ -1,4 +1,4 @@
-package com.trantordev.shopapp.feature.sample.ui.camera
+package com.trantordev.shopapp.feature.camera
 
 import android.os.Bundle
 import android.view.LayoutInflater

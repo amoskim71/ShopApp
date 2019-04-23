@@ -1,4 +1,4 @@
-package com.trantordev.shopapp.feature.sample.ui.email
+package com.trantordev.shopapp.feature.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,20 +11,20 @@ import androidx.lifecycle.ViewModelProviders
 import com.trantordev.shopapp.R
 
 
-class EmailFragment : Fragment() {
+class SearchFragment : Fragment() {
 
-    private lateinit var emailViewModel: EmailViewModel
+    private lateinit var searchViewModel: SearchViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        emailViewModel =
-                ViewModelProviders.of(this).get(EmailViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_camera, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        emailViewModel.text.observe(this, Observer {
+        searchViewModel =
+                ViewModelProviders.of(this).get(SearchViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_search, container, false)
+        val textView: TextView = root.findViewById(R.id.text_dashboard)
+        searchViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

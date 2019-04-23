@@ -1,4 +1,4 @@
-package com.trantordev.shopapp.feature.product
+package com.trantordev.shopapp.feature.product.list
 
 interface ProductView {
 

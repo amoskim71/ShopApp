@@ -1,4 +1,4 @@
-package com.trantordev.shopapp.feature.sample.ui.user
+package com.trantordev.shopapp.feature.user
 
 import android.os.Bundle
 import android.view.LayoutInflater

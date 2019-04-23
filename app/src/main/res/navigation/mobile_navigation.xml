@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.trantordev.shopapp.feature.sample.ui.home.HomeFragment"
+        android:name="com.trantordev.shopapp.feature.product.list.ProductFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_product_list" />
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.trantordev.shopapp.feature.sample.ui.search.SearchFragment"
+        android:name="com.trantordev.shopapp.feature.search.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_camera"
-        android:name="com.trantordev.shopapp.feature.sample.ui.camera.CameraFragment"
+        android:name="com.trantordev.shopapp.feature.camera.CameraFragment"
         android:label="@string/title_camera"
         tools:layout="@layout/fragment_camera" />
 
     <fragment
         android:id="@+id/navigation_mail"
-        android:name="com.trantordev.shopapp.feature.sample.ui.email.EmailFragment"
+        android:name="com.trantordev.shopapp.feature.email.EmailFragment"
         android:label="@string/title_mail"
         tools:layout="@layout/fragment_mail" />
 
     <fragment
         android:id="@+id/navigation_user"
-        android:name="com.trantordev.shopapp.feature.sample.ui.user.UserFragment"
+        android:name="com.trantordev.shopapp.feature.user.UserFragment"
         android:label="@string/title_user"
         tools:layout="@layout/fragment_user" />
 
