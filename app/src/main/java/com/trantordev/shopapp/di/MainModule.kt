@@ -1,6 +1,10 @@
 package com.trantordev.shopapp.di
 
+import com.trantordev.shopapp.feature.product.list.ProductInteractor
 import com.trantordev.shopapp.network.api.ProductApi
+import com.trantordev.shopapp.network.api.ProductBackendApi
+import com.trantordev.shopapp.network.api.ProductBackendApiDecorator
+import com.trantordev.shopapp.persistence.repository.ProductRepository
 import com.trantordev.shopapp.util.Constants
 import okhttp3.OkHttpClient
 import org.koin.core.qualifier.named
@@ -13,6 +17,7 @@ import java.util.concurrent.TimeUnit
 const val RETROFIT = "retrofit"
 const val OKHTTP = "okhttp"
 const val RETROFIT_PRODUCTAPI = "retrofit_product_api"
+const val RETROFIT_PRODUCT_BACKEND_API = "retrofit_product_backend_api"
 
 val mainModule = module {
 
@@ -38,5 +43,23 @@ val mainModule = module {
         val retrofit: Retrofit = get(named(RETROFIT))
         retrofit.create(ProductApi::class.java)
     }
+
+    single<ProductBackendApi>(named(RETROFIT_PRODUCT_BACKEND_API)) {
+        val retrofit: Retrofit = get(named(RETROFIT))
+        retrofit.create(ProductBackendApi::class.java)
+    }
+
+    single{
+        ProductBackendApiDecorator(get())
+    }
+
+    single{
+        ProductRepository(get())
+    }
+
+    single{
+        ProductInteractor(get())
+    }
+    
 
 }
