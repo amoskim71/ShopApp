@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), ProductFragment.OnListFragmentInteract
     }
 
     override fun onListFragmentInteraction(item: DummyContent.DummyItem?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        // do nothing
     }
 
 }
