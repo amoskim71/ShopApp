@@ -31,6 +31,7 @@ class ProductFragment : MviFragment<ProductView, ProductPresenter>(), ProductVie
 
     // TODO: Customize parameters
     private var columnCount = 1
+    private var currentPage = 1;
 
     val productPresenter: ProductPresenter by inject()
 
@@ -64,21 +65,27 @@ class ProductFragment : MviFragment<ProductView, ProductPresenter>(), ProductVie
     override fun createPresenter() = ProductPresenter(get())
 
     override fun searchIntent(): Observable<Int> {
-        return Observable.just(1)
+        return Observable.just(currentPage)
     }
 
 
     override fun render(viewState: ProductViewState) {
         Timber.d("render %s", viewState)
         if (viewState is ProductViewState.InitialState) {
+            Timber.d("VIEWSTATEREDER: INITIAL ")
             renderInitial()
+            searchIntent()
         } else if (viewState is ProductViewState.LoadingState) {
+            Timber.d("VIEWSTATEREDER: LOADING ")
             renderLoading()
         } else if (viewState is ProductViewState.SearchResultState) {
+            Timber.d("VIEWSTATEREDER: SEARCHRESULT ")
             renderResult((viewState as ProductViewState.SearchResultState).result)
         } else if (viewState is ProductViewState.EmptyResultState) {
+            Timber.d("VIEWSTATEREDER: EMPITYRESULT ")
             renderEmptyResult()
         } else if (viewState is ProductViewState.ErrorState) {
+            Timber.d("VIEWSTATEREDER: ERROR ")
             Timber.e((viewState as ProductViewState.ErrorState).error)
             renderError()
         } else {

@@ -9,16 +9,8 @@ import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
-class ProductPresenter(private val productInteractor: ProductInteractor) : MviBasePresenter<ProductView, ProductViewState>() {
+class ProductPresenter(private val productInteractor: ProductInteractor) : MviBasePresenter<ProductView, ProductViewState>(ProductViewState.InitialState()) {
 
-//    override fun bindIntents() {
-//        val search = intent(ViewIntentBinder<ProductView, Any> { ProductView.searchIntent() })
-//                .doOnNext { s -> Timber.d("intent: Search '%s'", s) }
-//                .switchMap(Function<Any, ObservableSource<*>> { productInteractor.search() })
-//                .observeOn(AndroidSchedulers.mainThread())
-//
-//        subscribeViewState(search) { ProductView.render() }
-//    }
 
     override fun bindIntents() {
         val productState: Observable<ProductViewState> = intent(ProductView::searchIntent)
