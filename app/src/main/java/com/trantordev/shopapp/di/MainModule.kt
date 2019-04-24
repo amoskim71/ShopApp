@@ -1,6 +1,7 @@
 package com.trantordev.shopapp.di
 
 import com.trantordev.shopapp.feature.product.list.ProductInteractor
+import com.trantordev.shopapp.feature.product.list.ProductPresenter
 import com.trantordev.shopapp.network.api.ProductApi
 import com.trantordev.shopapp.network.api.ProductBackendApi
 import com.trantordev.shopapp.network.api.ProductBackendApiDecorator
@@ -44,7 +45,7 @@ val mainModule = module {
         retrofit.create(ProductApi::class.java)
     }
 
-    single<ProductBackendApi>(named(RETROFIT_PRODUCT_BACKEND_API)) {
+    single {
         val retrofit: Retrofit = get(named(RETROFIT))
         retrofit.create(ProductBackendApi::class.java)
     }
@@ -60,6 +61,9 @@ val mainModule = module {
     single{
         ProductInteractor(get())
     }
-    
+
+    single{
+        ProductPresenter(get())
+    }
 
 }

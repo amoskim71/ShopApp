@@ -9,20 +9,30 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hannesdorfmann.mosby3.mvi.MviFragment
 import com.trantordev.shopapp.R
 
 import com.trantordev.shopapp.feature.product.dummy.DummyContent
 import com.trantordev.shopapp.feature.product.dummy.DummyContent.DummyItem
+import com.trantordev.shopapp.network.model.Products
+import io.reactivex.Observable
+import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
+import timber.log.Timber
 
 /**
  * A fragment representing a list of Items.
  * Activities containing this fragment MUST implement the
  * [ProductFragment.OnListFragmentInteractionListener] interface.
  */
-class ProductFragment : Fragment() {
+class ProductFragment : MviFragment<ProductView, ProductPresenter>(), ProductView {
+
+
 
     // TODO: Customize parameters
     private var columnCount = 1
+
+    val productPresenter: ProductPresenter by inject()
 
     private var listener: OnListFragmentInteractionListener? = null
 
@@ -50,6 +60,71 @@ class ProductFragment : Fragment() {
         }
         return view
     }
+
+    override fun createPresenter() = ProductPresenter(get())
+
+    override fun searchIntent(): Observable<Int> {
+        return Observable.just(1)
+    }
+
+
+    override fun render(viewState: ProductViewState) {
+        Timber.d("render %s", viewState)
+        if (viewState is ProductViewState.InitialState) {
+            renderInitial()
+        } else if (viewState is ProductViewState.LoadingState) {
+            renderLoading()
+        } else if (viewState is ProductViewState.SearchResultState) {
+            renderResult((viewState as ProductViewState.SearchResultState).result)
+        } else if (viewState is ProductViewState.EmptyResultState) {
+            renderEmptyResult()
+        } else if (viewState is ProductViewState.ErrorState) {
+            Timber.e((viewState as ProductViewState.ErrorState).error)
+            renderError()
+        } else {
+            throw IllegalArgumentException("Don't know how to render viewState $viewState")
+        }
+    }
+
+    private fun renderResult(result: List<Products>) {
+//        recyclerView.setVisibility(View.VISIBLE)
+//        loadingView.setVisibility(View.GONE)
+//        emptyView.setVisibility(View.GONE)
+//        errorView.setVisibility(View.GONE)
+//        adapter.setProducts(result)
+//        adapter.notifyDataSetChanged()
+    }
+
+    private fun renderInitial() {
+//        recyclerView.setVisibility(View.GONE)
+//        loadingView.setVisibility(View.GONE)
+//        errorView.setVisibility(View.GONE)
+//        emptyView.setVisibility(View.GONE)
+    }
+
+    private fun renderLoading() {
+//        recyclerView.setVisibility(View.GONE)
+//        loadingView.setVisibility(View.VISIBLE)
+//        errorView.setVisibility(View.GONE)
+//        emptyView.setVisibility(View.GONE)
+    }
+
+    private fun renderError() {
+//        recyclerView.setVisibility(View.GONE)
+//        loadingView.setVisibility(View.GONE)
+//        errorView.setVisibility(View.VISIBLE)
+//        emptyView.setVisibility(View.GONE)
+    }
+
+    private fun renderEmptyResult() {
+//        recyclerView.setVisibility(View.GONE)
+//        loadingView.setVisibility(View.GONE)
+//        errorView.setVisibility(View.GONE)
+//        emptyView.setVisibility(View.VISIBLE)
+    }
+
+
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
