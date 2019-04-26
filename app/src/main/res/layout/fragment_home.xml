@@ -3,4 +3,38 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/textViewTexto1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Texto1"></TextView>
+    <TextView
+        android:id="@+id/textViewTexto2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Texto1"></TextView>
+    <TextView
+        android:id="@+id/textViewTexto3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Texto1"></TextView>
+    <TextView
+        android:id="@+id/textViewTexto4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Texto1"></TextView>
+
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/editTextInput"
+    />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar"
+        android:id="@+id/buttonEnviar"
+        />
+
 </LinearLayout>

@@ -1,5 +1,7 @@
 package com.trantordev.shopapp.di
 
+import com.trantordev.shopapp.feature.home.HomeInteractor
+import com.trantordev.shopapp.feature.home.HomePresenter
 import com.trantordev.shopapp.feature.product.list.ProductInteractor
 import com.trantordev.shopapp.feature.product.list.ProductPresenter
 import com.trantordev.shopapp.network.api.ProductApi
@@ -64,6 +66,14 @@ val mainModule = module {
 
     single{
         ProductPresenter(get())
+    }
+
+    single{
+        HomePresenter(get())
+    }
+
+    single{
+        HomeInteractor()
     }
 
 }
