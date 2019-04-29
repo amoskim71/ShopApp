@@ -58,17 +58,16 @@ class HomeFragment : MviFragment<HomeView, HomePresenter>(), HomeView {
 
 
     override fun render(viewState: HomeViewState) {
-        Timber.d("VIEWSTATEREDER %s", viewState)
 
         Timber.d("VIEWSTATEREDER: ENTROU 1 VEZ ")
 
-        if (viewState is HomeViewState.MessageNotTypedYet) {
+        if (viewState is HomeViewState.MessageNotTypedYetState) {
             Timber.d("VIEWSTATEREDER: MESSAGE NOT TYPED YET ")
             renderMessageNotTypedYet()
-        }  else if(viewState is HomeViewState.MessageContent) {
+        }  else if(viewState is HomeViewState.MessageContentState) {
             Timber.d("VIEWSTATEREDER: SHOW MESSAGE ")
             renderMessageOnScreen(viewState.content)
-        }else if(viewState is HomeViewState.ButtonClicked) {
+        }else if(viewState is HomeViewState.ButtonClickedState) {
             Timber.d("VIEWSTATEREDER: BUTTONCLICKED ")
             Observable.just(editTextInput.toString())
         }else {

@@ -7,7 +7,7 @@ import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
-class HomePresenter(private val homeInteractor: HomeInteractor) : MviBasePresenter<HomeView, HomeViewState>(HomeViewState.MessageNotTypedYet()) {
+class HomePresenter(private val homeInteractor: HomeInteractor) : MviBasePresenter<HomeView, HomeViewState>(HomeViewState.MessageNotTypedYetState()) {
 
 
     override fun bindIntents() {

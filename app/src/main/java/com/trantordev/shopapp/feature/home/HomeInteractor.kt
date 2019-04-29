@@ -8,20 +8,21 @@ class HomeInteractor {
     fun getContent(query: String): Observable<HomeViewState> {
 
         if(query.isEmpty()){
-            return Observable.just<HomeViewState>(HomeViewState.MessageNotTypedYet())
-        }
+            return Observable.just<HomeViewState>(HomeViewState.MessageNotTypedYetState())
+        }else {
 
-        var content = "Conteúdo 02"
-        if(query.equals("1",true)){
-            content = "Conteúdo 01"
-        }
+            var content = "Conteúdo 02"
+            if (query.equals("1", true)) {
+                content = "Conteúdo 01"
+            }
 
-        return Observable.just<HomeViewState>(HomeViewState.MessageContent(content))
+            return Observable.just<HomeViewState>(HomeViewState.MessageContentState(content))
+        }
 
     }
 
     fun onButtonClick(): Observable<HomeViewState>{
-        return Observable.just<HomeViewState>(HomeViewState.ButtonClicked())
+        return Observable.just<HomeViewState>(HomeViewState.ButtonClickedState())
     }
 
 }
