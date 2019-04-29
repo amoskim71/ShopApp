@@ -6,7 +6,9 @@ import io.reactivex.Observable
 
 interface HomeView: MvpView {
 
-    fun initList(): Observable<Int>
+    fun showMessage(): Observable<String>
+
+    fun onButtonClick(): Observable<Unit>
 
     abstract fun render(viewState: HomeViewState)
 }

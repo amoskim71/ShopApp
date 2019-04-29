@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.hannesdorfmann.mosby3.mvi.MviFragment
-import com.trantordev.shopapp.network.model.Products
+import com.jakewharton.rxbinding2.view.clicks
 import io.reactivex.Observable
+import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import timber.log.Timber
@@ -42,37 +43,49 @@ class HomeFragment : MviFragment<HomeView, HomePresenter>(), HomeView {
         return view
     }
 
+
     override fun createPresenter() = HomePresenter(get())
 
-    override fun initList(): Observable<Int> {
-        return Observable.just(currentPage)
+    override fun showMessage(): Observable<String> {
+        return Observable.just(editTextInput.toString())
+    }
+
+    override fun onButtonClick(): Observable<Unit> {
+        return buttonEnviar.clicks()
     }
 
 
+
+
     override fun render(viewState: HomeViewState) {
-        Timber.d("render %s", viewState)
-        if (viewState is HomeViewState.InitialState) {
-            Timber.d("VIEWSTATEREDER: INITIAL ")
-            renderInitial()
-        }  else {
+        Timber.d("VIEWSTATEREDER %s", viewState)
+
+        Timber.d("VIEWSTATEREDER: ENTROU 1 VEZ ")
+
+        if (viewState is HomeViewState.MessageNotTypedYet) {
+            Timber.d("VIEWSTATEREDER: MESSAGE NOT TYPED YET ")
+            renderMessageNotTypedYet()
+        }  else if(viewState is HomeViewState.MessageContent) {
+            Timber.d("VIEWSTATEREDER: SHOW MESSAGE ")
+            renderMessageOnScreen(viewState.content)
+        }else if(viewState is HomeViewState.ButtonClicked) {
+            Timber.d("VIEWSTATEREDER: BUTTONCLICKED ")
+            Observable.just(editTextInput.toString())
+        }else {
             throw IllegalArgumentException("Don't know how to render viewState $viewState")
         }
     }
 
-    private fun renderResult(result: List<Products>) {
-//        recyclerView.setVisibility(View.VISIBLE)
-//        loadingView.setVisibility(View.GONE)
-//        emptyView.setVisibility(View.GONE)
-//        errorView.setVisibility(View.GONE)
-//        adapter.setProducts(result)
-//        adapter.notifyDataSetChanged()
+    private fun renderMessageOnScreen(message: String) {
+        textViewTexto1.visibility = View.VISIBLE
+        textViewTexto1.text = message
     }
 
-    private fun renderInitial() {
-//        recyclerView.setVisibility(View.GONE)
-//        loadingView.setVisibility(View.GONE)
-//        errorView.setVisibility(View.GONE)
-//        emptyView.setVisibility(View.GONE)
+    private fun renderMessageNotTypedYet() {
+        textViewTexto1.visibility = View.GONE
+        textViewTexto2.visibility = View.GONE
+        textViewTexto3.visibility = View.GONE
+        textViewTexto4.visibility = View.GONE
     }
 
     private fun renderLoading() {
